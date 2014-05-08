@@ -1,0 +1,4 @@
+recursive-include cryptos/public *
+include cryptos/public/favicon.ico
+recursive-include cryptos/i18n *
+recursive-include cryptos/templates *
