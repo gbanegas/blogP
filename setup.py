@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 #quickstarted Options:
 #
-# sqlalchemy: False
-# auth:       
+# sqlalchemy: True
+# auth:       sqlalchemy
 # mako:       False
 #
 #
@@ -35,19 +35,17 @@ install_requires=[
     "TurboGears2 >= 2.3.2",
     "Babel",
     "Genshi",
+    "zope.sqlalchemy >= 0.4",
     "sqlalchemy",
-    "sqlalchemy-migrate",
+    "alembic",
     "repoze.who",
-    "repoze.who-friendlyform >= 1.0.4",
-    "tgext.admin >= 0.5.1",
-    "repoze.who.plugins.sa",
     "tw2.forms",
-    "tw2.forms",
-    "docutils"
+    "tgext.admin >= 0.6.1",
+    "docutils",
     ]
 
 setup(
-    name='CryptoS',
+    name='crsith',
     version='0.1',
     description='',
     author='',
@@ -58,17 +56,17 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=testpkgs,
-    package_data={'cryptos': ['i18n/*/LC_MESSAGES/*.mo',
+    package_data={'wiki20': ['i18n/*/LC_MESSAGES/*.mo',
                                  'templates/*/*',
                                  'public/*/*']},
-    message_extractors={'cryptos': [
+    message_extractors={'wiki20': [
             ('**.py', 'python', None),
             ('templates/**.html', 'genshi', None),
             ('public/**', 'ignore', None)]},
 
     entry_points={
         'paste.app_factory': [
-            'main = cryptos.config.middleware:make_app'
+            'main = wiki20.config.middleware:make_app'
         ],
         'gearbox.plugins': [
             'turbogears-devtools = tg.devtools'

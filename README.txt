@@ -1,12 +1,12 @@
-This file is for you to describe the CryptoS application. Typically
+This file is for you to describe the wiki20 application. Typically
 you would include information such as the information below:
 
 Installation and Setup
 ======================
 
-Install ``CryptoS`` using the setup.py script::
+Install ``wiki20`` using the setup.py script::
 
-    $ cd CryptoS
+    $ cd wiki20
     $ python setup.py develop
 
 Create the project database for any model classes defined::
