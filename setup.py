@@ -41,7 +41,7 @@ install_requires=[
     "repoze.who",
     "tw2.forms",
     "tgext.admin >= 0.6.1",
-    "docutils",
+    "docutils"
     ]
 
 setup(
@@ -56,17 +56,17 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=testpkgs,
-    package_data={'wiki20': ['i18n/*/LC_MESSAGES/*.mo',
+    package_data={'crsith': ['i18n/*/LC_MESSAGES/*.mo',
                                  'templates/*/*',
                                  'public/*/*']},
-    message_extractors={'wiki20': [
+    message_extractors={'crsith': [
             ('**.py', 'python', None),
             ('templates/**.html', 'genshi', None),
             ('public/**', 'ignore', None)]},
 
     entry_points={
         'paste.app_factory': [
-            'main = wiki20.config.middleware:make_app'
+            'main = crsith.config.middleware:make_app'
         ],
         'gearbox.plugins': [
             'turbogears-devtools = tg.devtools'

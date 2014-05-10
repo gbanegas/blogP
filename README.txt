@@ -1,12 +1,12 @@
-This file is for you to describe the wiki20 application. Typically
+This file is for you to describe the crsith application. Typically
 you would include information such as the information below:
 
 Installation and Setup
 ======================
 
-Install ``wiki20`` using the setup.py script::
+Install ``crsith`` using the setup.py script::
 
-    $ cd wiki20
+    $ cd crsith
     $ python setup.py develop
 
 Create the project database for any model classes defined::
