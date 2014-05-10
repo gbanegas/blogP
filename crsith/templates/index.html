@@ -13,14 +13,15 @@
     <div class="col-md-8">
       <div class="jumbotron">
       <p py:if="request.identity"><a href="/add">Add page</a></p>
-         <p py:for="page in pages">
-         <h2>
-              <a href="${tg.url('/' + page.pagename)}" py:content="page.title">
-                     Page Name Here.
-              </a>
+
+      <p py:for="page in pages">
+        <h2>
+          <a href="${tg.url('/' + page.pagename)}" py:content="page.title">
+            Page Name Here.
+          </a>
         </h2>
-          <p py:content="page.data"> Data </p>
-        </p>
+        <p py:content="page.data"> Data </p>
+      </p>
 
       </div>
     </div>
