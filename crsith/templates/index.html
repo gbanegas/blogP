@@ -5,11 +5,26 @@
   <xi:include href="master.html" />
 
 <head>
-  <title>Welcome to TurboGears 2.3, standing on the shoulders of giants, since 2007</title>
+  <title>Welcome to CrSith</title>
 </head>
 
 <body>
-  
+  <div class="row">
+    <div class="col-md-8">
+      <div class="jumbotron">
+      <p py:if="request.identity"><a href="/add">Add page</a></p>
+         <p py:for="page in pages">
+         <h2>
+              <a href="${tg.url('/' + page.pagename)}" py:content="page.title">
+                     Page Name Here.
+              </a>
+        </h2>
+          <p py:content="page.data"> Data </p>
+        </p>
+
+      </div>
+    </div>
+  </div>
 
   <em class="pull-right small"> Thank you for reading us.</em>
 </body>

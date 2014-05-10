@@ -44,7 +44,8 @@ class RootController(BaseController):
     @expose('crsith.templates.index')
     def index(self):
         """Handle the front-page."""
-        return dict(page='index')
+        pages = DBSession.query(Page).order_by(Page.title)
+        return dict(page='index',pages=pages)
 
     @expose('crsith.templates.page')
     def page(self, pagename):

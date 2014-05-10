@@ -43,7 +43,7 @@ def bootstrap(command, conf, vars):
         u1.password = 'editpass'
     
         model.DBSession.add(u1)
-        page = model.Page(pagename="FrontPage", data="initial")
+        page = model.Page(pagename="FrontPage",title="Initial",data="initial")
         model.DBSession.add(page)
 
         model.DBSession.flush()
