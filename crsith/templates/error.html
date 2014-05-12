@@ -11,6 +11,8 @@
 <body>
   <h1>Error ${code}</h1>
 
+
+
 <?python
 import re
 mf = re.compile(r'(</?)script', re.IGNORECASE)
@@ -18,5 +20,7 @@ def fixmessage(message):
     return mf.sub(r'\1noscript', message)
 ?>
   <div>${XML(fixmessage(message))}</div>
+
+  <img style="vertical-align:middle;" src="${tg.url('/img/rebel_logo.png')}" />
 </body>
 </html>

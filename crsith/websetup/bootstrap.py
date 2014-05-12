@@ -3,6 +3,8 @@
 from __future__ import print_function
 
 import logging
+import time
+import datetime
 from tg import config
 from crsith import model
 import transaction
@@ -43,7 +45,7 @@ def bootstrap(command, conf, vars):
         u1.password = 'editpass'
     
         model.DBSession.add(u1)
-        page = model.Page(pagename="FrontPage",title="Initial",data="initial")
+        page = model.Page(pagename="FrontPage",title="Initial Post",data="Blog of Gustavo Banegas",date=time.strftime("%c"), author=1, tags="Test, Blog, code")
         model.DBSession.add(page)
 
         model.DBSession.flush()

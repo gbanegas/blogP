@@ -11,9 +11,6 @@
 <body>
   <div class="row">
     <div class="col-md-8">
-    
-      <p py:if="request.identity"><a href="/add">Add page</a></p>
- 
       <p py:for="page in pages">
         <div class="jumbotron">
           <h1 py:content="page.title">
@@ -21,7 +18,7 @@
           </h1>
           <p><font size="1"><span py:content="page.date"> time </span> by <span py:content="page.getAuthor()"> user </span></font></p>
           <font size="5"><span py:content="page.data"> Data </span></font>
-          <font size="2"> <p> tags: <span py:for="tag in page.getTags()">  <a href="${tg.url('/searchtag(' + tag +')')}" ><span py:content="tag"> time </span></a></span></p></font>
+          <font size="2"> <p> tags: <span py:for="tag in page.getTags()">  <a href="${tg.url('/searchTag(' + tag +')')}" ><span py:content="tag"> time </span></a></span></p></font>
         </div>
       </p>
     </div>

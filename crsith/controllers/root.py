@@ -2,6 +2,10 @@
 """Main Controller"""
 
 import re
+import time
+import datetime
+
+from pagecontroller import PageController
 from tg import expose, flash, require, url, lurl, request, redirect, tmpl_context
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg import predicates
@@ -16,8 +20,10 @@ from crsith.controllers.error import ErrorController
 from crsith.model.page import Page
 from docutils.core import publish_parts
 
-__all__ = ['RootController']
 
+
+__all__ = ['RootController']
+pageController = PageController();
 
 class RootController(BaseController):
     """
@@ -44,33 +50,40 @@ class RootController(BaseController):
     @expose('crsith.templates.index')
     def index(self):
         """Handle the front-page."""
-        pages = DBSession.query(Page).order_by(Page.title)
+        pages = pageController.getAllPages()
         return dict(page='index',pages=pages)
 
     @expose('crsith.templates.page')
     def page(self, pagename):
-        from sqlalchemy.exc import InvalidRequestError
-        try:
-            page = DBSession.query(Page).filter_by(pagename=pagename).one()
-        except InvalidRequestError:
-            raise redirect("notfound", pagename=pagename)
+        page = pageController.getPage(pagename)
         content = publish_parts(page.data, writer_name="html")["html_body"]
         root = url('/')
         content = wikiwords.sub(r'<a href="%s\1">\1</a>' % root, content)
         return dict(content=content, wikipage=page)
 
+    @expose('crsith.templates.result')
+    def searchtag(self, tag):
+        pages = pageController.searchPages(tag)
+        return dict(page='index',pages=pages)
 
     @expose("crsith.templates.pagelist")
     def pagelist(self):
-        pages = [page.pagename for page in DBSession.query(Page).order_by(Page.pagename)]
+        pages = pageController.getAllNamePages()
         return dict(pages=pages)
     
     @expose(template="crsith.templates.edit")
     @require(predicates.is_user('manager', msg=l_('Only for the editor')))
     def edit(self, pagename):
-        page = DBSession.query(Page).filter_by(pagename=pagename).one()
+        page = pageController.getPage(pagename)
         return dict(wikipage=page)
 
+    @expose("wiki20.templates.edit")
+    @require(predicates.is_user('manager', msg=l_('Only for the editor')))
+    def notfound(self, pagename):
+        page = Page(pagename=pagename, data="")
+        DBSession.add(page)
+        return dict(wikipage=page)
+    
     @expose(template="crsith.templates.add")
     @require(predicates.is_user('manager', msg=l_('Only for the editor')))
     def add(self):
@@ -79,11 +92,9 @@ class RootController(BaseController):
 
     @expose()
     @require(predicates.is_user('manager', msg=l_('Only for the editor')))
-    def save_new(self, pagename, data, title, submit):
-        page = Page()
-        page.pagename = title
-        page.data = data
-        page.title = title
+    def save_new(self, pagename, data, title, tags,submit):
+        author =  request.identity['repoze.who.userid']
+        page = pageController.save(pagename, data, title, author, tags)
         DBSession.add(page)
         redirect("/" + pagename)
 
@@ -94,6 +105,7 @@ class RootController(BaseController):
         page = DBSession.query(Page).filter_by(pagename=pagename).one()
         page.data = data
         page.title = title
+        page.date = time.strftime("%c")
         redirect("/" + pagename)
 
     @expose('crsith.templates.about')
@@ -107,12 +119,9 @@ class RootController(BaseController):
     def data(self, **kw):
         """This method showcases how you can use the same controller for a data page and a display page"""
         return dict(page='data', params=kw)
+   
     @expose('crsith.templates.index')
     @require(predicates.has_permission('manage', msg=l_('Only for managers')))
-
-
-
-
     def manage_permission_only(self, **kw):
         """Illustrate how a page for managers only works."""
         return dict(page='managers stuff')
