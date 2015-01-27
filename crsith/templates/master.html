@@ -7,42 +7,65 @@
   <meta charset="${response.charset}" />
   <title py:if="False">CrSith</title>
   <meta py:replace="select('*')"/>
-  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" />
-  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/style.css')}" />
+  <!-- <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/bootstrap.min.css')}" /> -->
+  <link rel="stylesheet" type="text/css" media="screen" href="${tg.url('/css/stylen.css')}" />
+  <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+  <script type="text/javascript" src="${tg.url('javascript/modernizr-1.5.min.js')}"></script>
+<!-- <link rel="stylesheet" type="text/css" media="all" href="${tg.url('/css/default.css')}"/>
+<link  rel="stylesheet" type="text/css" media="all" href="${tg.url('/css/fonts.css')}"/>-->
 </head>
 
 <body py:match="body" py:attrs="select('@*')">
   <!-- Navbar -->
-  <nav class="navbar navbar-default">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-content">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="${tg.url('/')}">
-        <img src="${tg.url('/img/symbol_logo.png')}" height="20" alt="simbol_site"/>
+ <div id="top_container">
+    <header>
+        <div id="logo"><h1><a class="navbar-brand" href="${tg.url('/')}">
+        <img src="${tg.url('/img/symbol_logo.png')}" height="40" alt="simbol_site"/>
         ${getattr(tmpl_context, 'project_name', 'turbogears2')}
-      </a>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar-content">
-      <ul class="nav navbar-nav">
-        <li class="${('', 'active')[value_of('page') == 'index']}"><a href="${tg.url('/')}">Index</a></li>
-        <li class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/about')}">About</a></li>
+        </a></h1>
+        </div>
+        <nav>
+        <ul class="lavaLampWithImage" id="lava_menu">
+       <li class="${('', 'active')[value_of('page') == 'index']}"><a href="${tg.url('/')}">Index</a></li>
+        <li class="${('', 'active')[value_of('page') == 'data']}"><a href="${tg.url('/cv')}">My CV</a></li>
         <li class="${('', 'active')[value_of('page') == 'data']}"><a href="${tg.url('/data')}">Publications</a></li>
+        <li class="${('', 'active')[value_of('page') == 'about']}"><a href="${tg.url('/blog')}">Blog</a></li>
         <li class="${('', 'active')[value_of('page') == 'data']}"><a href="${tg.url('/pagelist')}">Page List</a></li>
-        <!--<li class="${('', 'active')[value_of('page') == 'environ']}"><a href="${tg.url('/environ')}">WSGI Environment</a></li>-->
-      </ul>
-
-      <ul py:if="tg.auth_stack_enabled" class="nav navbar-nav navbar-right">
         <li py:if="not request.identity"><a href="${tg.url('/login')}">Login</a></li>
         <li py:if="request.identity"><a href="${tg.url('/logout_handler')}">Logout</a></li>
         <li py:if="request.identity"><a href="${tg.url('/admin')}">Admin</a></li>
       </ul>
-    </div>
-  </nav>
+
+        </nav>
+      </header>
+      <div class="slideshow">
+        <ul class="slideshow">
+          <li class="show"><img width="950" height="350" src="${tg.url('/img/pic.jpg')}" /></li>
+        </ul>
+    </div>    
+    </div>   
+
+
+ <div id="site_content">
+      <div id="sidebar_container">
+        <div class="sidebar">
+          <h3>Latest News</h3>
+          <h4>New Website Launched</h4>
+          <h5>December 1st, 2013</h5>
+          <p>2013 sees the redesign of our website. Take a look around and let us know what you think.<br /><a href="#">Read more</a></p>
+        </div>
+        <div class="sidebar">
+          <h3>Useful Links</h3>
+          <ul>
+            <li><a href="#">First Link</a></li>
+            <li><a href="#">Another Link</a></li>
+            <li><a href="#">And Another</a></li>
+            <li><a href="#">Last One</a></li>
+          </ul>
+        </div>
+      </div>
+
+  
 
   <div class="container">
     <!-- Flash messages -->
@@ -58,12 +81,9 @@
     <div py:replace="select('*|text()')"/>
   </div>
 
+</div>
 
-  <!-- Footer -->
-  <footer class="footer hidden-xs hidden-sm">
-    <a class="pull-right" href="http://www.turbogears.org"><img style="vertical-align:middle;" src="${tg.url('/img/under_logo.png')}" alt="CrSith blog" /></a>
-    <p>Copyright &copy; ${getattr(tmpl_context, 'project_name', 'TurboGears2')} ${h.current_year()}</p>
-  </footer>
+
 
   <script src="http://code.jquery.com/jquery.js"></script>
   <script src="${tg.url('/javascript/bootstrap.min.js')}"></script>
