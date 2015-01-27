@@ -16,7 +16,7 @@
         <h1>All Pages</h1>
         <ul>
             <li py:for="pagename in pages">
-                <a href="${tg.url('/' + pagename)}"
+                <a href="${tg.url('/page/' + pagename)}"
                    py:content="pagename">
                      Page Name Here.
                 </a>
