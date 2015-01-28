@@ -142,9 +142,9 @@ ol li {
 
 #top_container
 {  background: #145B8D;
-   background: -moz-linear-gradient(#33D2FF, #145B8D);
-   background: -o-linear-gradient(#33D2FF, #145B8D);
-   background: -webkit-linear-gradient(#33D2FF, #145B8D);
+   background: -moz-linear-gradient( #2ca5c3, #83afba);
+   background: -o-linear-gradient(#2ca5c3, #83afba);
+   background: -webkit-linear-gradient(#2ca5c3, #83afba);
    padding-bottom: 40px;}
 
 header { 

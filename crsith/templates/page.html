@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="main_content">
+    <div id="main_content">
         <li py:if="request.identity"><a href="/edit/${wikipage.pagename}">Edit this page</a></li>
         <li py:if="request.identity"><a href="/add">Add page</a></li>
         <b> <font size="6"><span py:replace="wikipage.title">Page Name Goes Here</span></font></b> <br />
