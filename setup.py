@@ -32,7 +32,8 @@ testpkgs=['WebTest >= 1.2.3',
                ]
 
 install_requires=[
-    "TurboGears2 >= 2.3.2",
+    "TurboGears2 >= 2.3.4",
+    "Babel",
     "Genshi",
     "zope.sqlalchemy >= 0.4",
     "sqlalchemy",
@@ -44,7 +45,7 @@ install_requires=[
     ]
 
 setup(
-    name='crsith',
+    name='keycrypt',
     version='0.1',
     description='',
     author='',
@@ -55,17 +56,17 @@ setup(
     include_package_data=True,
     test_suite='nose.collector',
     tests_require=testpkgs,
-    package_data={'crsith': ['i18n/*/LC_MESSAGES/*.mo',
+    package_data={'keycrypt': ['i18n/*/LC_MESSAGES/*.mo',
                                  'templates/*/*',
                                  'public/*/*']},
-    message_extractors={'crsith': [
+    message_extractors={'keycrypt': [
             ('**.py', 'python', None),
             ('templates/**.html', 'genshi', None),
             ('public/**', 'ignore', None)]},
 
     entry_points={
         'paste.app_factory': [
-            'main = crsith.config.middleware:make_app'
+            'main = keycrypt.config.middleware:make_app'
         ],
         'gearbox.plugins': [
             'turbogears-devtools = tg.devtools'

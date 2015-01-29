@@ -1,4 +1,4 @@
-recursive-include crsith/public *
-include crsith/public/favicon.ico
-recursive-include crsith/i18n *
-recursive-include crsith/templates *
+recursive-include keycrypt/public *
+include keycrypt/public/favicon.ico
+recursive-include keycrypt/i18n *
+recursive-include keycrypt/templates *

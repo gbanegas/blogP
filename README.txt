@@ -1,12 +1,12 @@
-This file is for you to describe the crsith application. Typically
+This file is for you to describe the keycrypt application. Typically
 you would include information such as the information below:
 
 Installation and Setup
 ======================
 
-Install ``crsith`` using the setup.py script::
+Install ``keycrypt`` using the setup.py script::
 
-    $ cd crsith
+    $ cd keycrypt
     $ python setup.py develop
 
 Create the project database for any model classes defined::
