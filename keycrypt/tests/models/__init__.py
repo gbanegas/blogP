@@ -2,9 +2,9 @@
 """Unit test suite for the models of the application."""
 
 from nose.tools import eq_
-from keycrypt.model import DBSession
-from keycrypt.tests import load_app
-from keycrypt.tests import setup_db, teardown_db
+from crsith.model import DBSession
+from crsith.tests import load_app
+from crsith.tests import setup_db, teardown_db
 
 __all__ = ['ModelTest']
 

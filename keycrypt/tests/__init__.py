@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Unit and functional test suite for keycrypt."""
+"""Unit and functional test suite for crsith."""
 
 from os import getcwd, path
 
@@ -10,7 +10,7 @@ from gearbox.commands.setup_app import SetupAppCommand
 from tg import config
 from tg.util import Bunch
 
-from keycrypt import model
+from crsith import model
 
 __all__ = ['setup_app', 'setup_db', 'teardown_db', 'TestController']
 
@@ -43,12 +43,12 @@ def teardown_db():
 class TestController(object):
     """Base functional test case for the controllers.
 
-    The keycrypt application instance (``self.app``) set up in this test
+    The crsith application instance (``self.app``) set up in this test
     case (and descendants) has authentication disabled, so that developers can
     test the protected areas independently of the :mod:`repoze.who` plugins
     used initially. This way, authentication can be tested once and separately.
 
-    Check keycrypt.tests.functional.test_authentication for the repoze.who
+    Check crsith.tests.functional.test_authentication for the repoze.who
     integration tests.
 
     This is the officially supported way to test protected areas with

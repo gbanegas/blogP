@@ -13,7 +13,7 @@ Please read http://pythonpaste.org/webtest/ for more information.
 
 from nose.tools import ok_
 
-from keycrypt.tests import TestController
+from crsith.tests import TestController
 
 
 class TestRootController(TestController):

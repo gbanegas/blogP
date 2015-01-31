@@ -18,7 +18,7 @@ class ErrorController(object):
     
     """
 
-    @expose('keycrypt.templates.error')
+    @expose('crsith.templates.error')
     def document(self, *args, **kwargs):
         """Render the error document"""
         resp = request.environ.get('pylons.original_response')

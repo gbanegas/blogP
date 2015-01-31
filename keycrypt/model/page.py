@@ -3,9 +3,11 @@ from sqlalchemy.orm import mapper, relation
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Integer,  Text
 
-from keycrypt.model import User
+from crsith.model import User
 
-from keycrypt.model import DeclarativeBase, metadata, DBSession
+from crsith.model import DeclarativeBase, metadata, DBSession
+
+import textile
 
 class Page(DeclarativeBase):
 	__tablename__ = 'page'
@@ -15,7 +17,7 @@ class Page(DeclarativeBase):
 	title = Column(Text, nullable=False)
 	data = Column(Text, nullable=False)
 	date = Column(Text,nullable=False)
-	author = Column(Integer, ForeignKey('tg_user.user_id',onupdate="CASCADE", ondelete="CASCADE"),nullable=False)
+	author = Column(Integer, ForeignKey('tg_user.user_id',onupdate="CASCADE", ondelete="CASCADE"))
 	tags = Column(Text)
 
 
@@ -28,6 +30,9 @@ class Page(DeclarativeBase):
 		self.tags = self.tags.replace(',', ' ');
 		tagList = self.tags.split();
 		return tagList;
+
+	def getHtmlData(self):
+		return textile.textile(self.data)
 
 
 

@@ -4,20 +4,20 @@ Auth* related model.
 
 This is where the models used by the authentication stack are defined.
 
-It's perfectly fine to re-use this definition in the keycrypt application,
+It's perfectly fine to re-use this definition in the crsith application,
 though.
 
 """
 import os
 from datetime import datetime
-from hashlib import sha512
+from hashlib import sha256
 __all__ = ['User', 'Group', 'Permission']
 
 from sqlalchemy import Table, ForeignKey, Column
 from sqlalchemy.types import Unicode, Integer, DateTime
 from sqlalchemy.orm import relation, synonym
 
-from keycrypt.model import DeclarativeBase, metadata, DBSession
+from crsith.model import DeclarativeBase, metadata, DBSession
 
 # This is the association table for the many-to-many relationship between
 # groups and permissions.
@@ -104,11 +104,11 @@ class User(DeclarativeBase):
 
     @classmethod
     def _hash_password(cls, password):
-        salt = sha512()
+        salt = sha256()
         salt.update(os.urandom(60))
         salt = salt.hexdigest()
 
-        hash = sha512()
+        hash = sha256()
         # Make sure password is a str because we cannot hash unicode objects
         hash.update((password + salt).encode('utf-8'))
         hash = hash.hexdigest()
@@ -144,7 +144,7 @@ class User(DeclarativeBase):
         :rtype: bool
 
         """
-        hash = sha512()
+        hash = sha256()
         hash.update((password + self.password[:64]).encode('utf-8'))
         return self.password[64:] == hash.hexdigest()
 

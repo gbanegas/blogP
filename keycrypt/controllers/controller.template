@@ -9,7 +9,7 @@ from tg import expose
 #from tg import predicates
 
 # project specific imports
-from keycrypt.lib.base import BaseController
+from crsith.lib.base import BaseController
 #from crsith.model import DBSession, metadata
 
 
@@ -17,6 +17,6 @@ class SampleController(BaseController):
     #Uncomment this line if your controller requires an authenticated user
     #allow_only = predicates.not_anonymous()
     
-    @expose('keycrypt.templates.index')
+    @expose('crsith.templates.index')
     def index(self):
         return dict(page='index')

@@ -59,5 +59,5 @@ def init_model(engine):
     #mapper(Reflected, t_reflected)
 
 # Import your model modules here.
-from keycrypt.model.auth import User, Group, Permission
-from keycrypt.model.page import Page
+from crsith.model.auth import User, Group, Permission
+from crsith.model.page import Page

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""Setup the keycrypt application"""
+"""Setup the crsith application"""
 from __future__ import print_function
 
 import logging
@@ -7,11 +7,11 @@ from tg import config
 import transaction
 
 def setup_schema(command, conf, vars):
-    """Place any commands to setup keycrypt here"""
+    """Place any commands to setup crsith here"""
     # Load the models
 
     # <websetup.websetup.schema.before.model.import>
-    from keycrypt import model
+    from crsith import model
     # <websetup.websetup.schema.after.model.import>
 
     

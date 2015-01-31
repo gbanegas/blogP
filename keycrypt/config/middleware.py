@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""WSGI middleware initialization for the keycrypt application."""
+"""WSGI middleware initialization for the crsith application."""
 
-from keycrypt.config.app_cfg import base_config
-from keycrypt.config.environment import load_environment
+from crsith.config.app_cfg import base_config
+from crsith.config.environment import load_environment
 
 
 __all__ = ['make_app']
@@ -14,18 +14,18 @@ make_base_app = base_config.setup_tg_wsgi_app(load_environment)
 
 def make_app(global_conf, full_stack=True, **app_conf):
     """
-    Set keycrypt up with the settings found in the PasteDeploy configuration
+    Set crsith up with the settings found in the PasteDeploy configuration
     file used.
     
-    :param global_conf: The global settings for keycrypt (those
+    :param global_conf: The global settings for crsith (those
         defined under the ``[DEFAULT]`` section).
     :type global_conf: dict
     :param full_stack: Should the whole TG2 stack be set up?
     :type full_stack: str or bool
-    :return: The keycrypt application with all the relevant middleware
+    :return: The crsith application with all the relevant middleware
         loaded.
     
-    This is the PasteDeploy factory for the keycrypt application.
+    This is the PasteDeploy factory for the crsith application.
     
     ``app_conf`` contains all the application-specific settings (those defined
     under ``[app:main]``.

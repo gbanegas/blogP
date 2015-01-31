@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Global configuration file for TG2-specific settings in keycrypt.
+Global configuration file for TG2-specific settings in crsith.
 
 This file complements development/deployment.ini.
 
@@ -8,9 +8,9 @@ This file complements development/deployment.ini.
 
 from tg.configuration import AppConfig
 
-import keycrypt
-from keycrypt import model
-from keycrypt.lib import app_globals, helpers 
+import crsith
+from crsith import model
+from crsith.lib import app_globals, helpers 
 
 base_config = AppConfig()
 base_config.renderers = []
@@ -24,7 +24,7 @@ base_config.disable_request_extensions = False
 base_config.dispatch_path_translator = True 
 base_config.prefer_toscawidgets2 = True
 
-base_config.package = keycrypt
+base_config.package = crsith
 
 #Enable json in expose
 base_config.renderers.append('json')
@@ -40,8 +40,8 @@ base_config.default_renderer = 'genshi'
 #base_config.renderers.append('chameleon_genshi')
 #Configure the base SQLALchemy Setup
 base_config.use_sqlalchemy = True
-base_config.model = keycrypt.model
-base_config.DBSession = keycrypt.model.DBSession
+base_config.model = crsith.model
+base_config.DBSession = crsith.model.DBSession
 # Configure the authentication backend
 
 # YOU MUST CHANGE THIS VALUE IN PRODUCTION TO SECURE YOUR APP 

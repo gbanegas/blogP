@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Setup the keycrypt application"""
+"""Setup the crsith application"""
 from __future__ import print_function
 
 import logging
 import time
 import datetime
 from tg import config
-from keycrypt import model
+from crsith import model
 import transaction
 
 def bootstrap(command, conf, vars):
-    """Place any commands to setup keycrypt here"""
+    """Place any commands to setup crsith here"""
 
     # <websetup.bootstrap.before.auth
     from sqlalchemy.exc import IntegrityError
@@ -43,6 +43,7 @@ def bootstrap(command, conf, vars):
         u1.display_name = 'Example editor'
         u1.email_address = 'editor@somedomain.com'
         u1.password = 'editpass'
+        transaction.commit()
     
         model.DBSession.add(u1)
         page = model.Page(pagename="FrontPage",title="Initial Post",data="Blog of Gustavo Banegas",date=time.strftime("%c"), author=1, tags="Test, Blog, code")

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""WSGI environment setup for keycrypt."""
+"""WSGI environment setup for crsith."""
 
-from keycrypt.config.app_cfg import base_config
+from crsith.config.app_cfg import base_config
 
 __all__ = ['load_environment']
 

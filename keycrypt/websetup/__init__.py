@@ -3,7 +3,7 @@
 
 import logging
 
-from keycrypt.config.environment import load_environment
+from crsith.config.environment import load_environment
 
 __all__ = ['setup_app']
 

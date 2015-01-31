@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 from nose.tools import eq_
 
-from keycrypt import model
-from keycrypt.tests.models import ModelTest
+from crsith import model
+from crsith.tests.models import ModelTest
 
 class TestGroup(ModelTest):
     """Unit test case for the ``Group`` model."""

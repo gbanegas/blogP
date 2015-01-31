@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-"""Controllers for the keycrypt application."""
+"""Controllers for the crsith application."""

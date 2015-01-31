@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-"""The keycrypt package"""
+"""The crsith package"""

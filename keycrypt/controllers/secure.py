@@ -4,7 +4,7 @@ from tg import expose, flash
 from tg.i18n import ugettext as _, lazy_ugettext as l_
 from tg.predicates import has_permission
 
-from keycrypt.lib.base import BaseController
+from crsith.lib.base import BaseController
 
 __all__ = ['SecureController']
 
@@ -15,13 +15,13 @@ class SecureController(BaseController):
     allow_only = has_permission('manage',
                                 msg=l_('Only for people with the "manage" permission'))
     
-    @expose('keycrypt.templates.index')
+    @expose('crsith.templates.index')
     def index(self):
         """Let the user know that's visiting a protected controller."""
         flash(_("Secure Controller here"))
         return dict(page='index')
     
-    @expose('keycrypt.templates.index')
+    @expose('crsith.templates.index')
     def some_where(self):
         """Let the user know that this action is protected too."""
         return dict(page='some_where')
